@@ -2,15 +2,17 @@
   "name": "userauth-october-2020",
   "version": "1.0.0",
   "description": "Practice MERN stack user athentication",
-  "main": "index.js",
+  "main": "server/startup/startServer.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "start": "clear && su -c \"nodemon --use-openssl-ca index.js\" nodejs",
+    "start": "su -c \"nodemon --use-openssl-ca server/startup/startServer.js\" nodejs",
     "kill": "clear && sudo pkill -9 -u $(id -u nodejs)",
     "restart": "npm run kill && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd frontend/variant-02 && npm run build",
+    "react": "cd frontend/variant-02 && npm start"
   },
   "repository": {
     "type": "git",
@@ -35,5 +37,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
+  },
+  "nodemonConfig": {
+    "ignore": ["test/*", "docs/*","frontend/*","node_modules/*"],
+    "delay": "2500"
   }
 }

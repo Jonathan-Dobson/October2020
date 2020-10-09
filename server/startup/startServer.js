@@ -1,17 +1,20 @@
 require("dotenv").config();
 const { SSL_PORT, SSL_CERT_FILE, SSL_CERT_KEY} = process.env
 
-const [ tls, fs, https, express, morgan, helmet, errorHandler, mainRouter ] = 
-['tls','fs','https','express','morgan','helmet','./errorHandler','../routes/mainRouter']
+const [ path, fs, https, express, morgan, helmet, errorHandler, mainRouter ] = 
+['path','fs','https','express','morgan','helmet','./errorHandler','../routes/mainRouter']
 .map(e=>require(e))
 
 const app = express().disable('x-powered-by')
 
+const staticPath = express.static(process.env.STATIC_PATH,{index: 'index.html'})
+
 const middleware = [
-    [ '/',   express.json()     ],
-    [ '/',   morgan('dev')      ],
-    [ '/',   helmet()           ],
-    [ '/',   errorHandler       ],
+    [ '/',  express.json() ],
+    [ '/',  morgan('dev') ],
+    [ '/',  helmet() ],
+    [ '/',  errorHandler ],
+    [ '/',  staticPath ],
     ...mainRouter
 ].forEach(m=>app.use(m[0],m[1]))
 

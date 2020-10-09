@@ -104,3 +104,6 @@ dist
 .tern-port
 
 .devtools/
+.dev-logs/
+.vscode/
+variant-01/
