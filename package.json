@@ -7,8 +7,13 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "su -c \"nodemon --use-openssl-ca server/startup/startServer.js\" nodejs",
+    "start":"npm run startserver & npm run startreact && exit",
+    "startserver":"xfce4-terminal --window --title=React --geometry 60x20+2+2 -e 'sh -c \"pwd\"; sh'",
+    "startreact":"xfce4-terminal --window --title=Server --geometry 60x20+640+2 -x 'pwd';",
+    "xstart": "xfce4-terminal --window  --working-directory=/home/jonathan/dev/FULL-STACK-2020/frontend/variant-02   --hide-menubar --window --working-directory=/home/jonathan/dev/FULL-STACK-2020  --hide-menubar ",
+    "oldstart": "su -c \"nodemon --use-openssl-ca server/startup/startServer.js\" nodejs && exit",
     "kill": "clear && sudo pkill -9 -u $(id -u nodejs)",
+    "pid":"ps -aux | grep nodejs",
     "restart": "npm run kill && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd frontend/variant-02 && npm run build",
@@ -39,7 +44,12 @@
     "nodemon": "^2.0.4"
   },
   "nodemonConfig": {
-    "ignore": ["test/*", "docs/*","frontend/*","node_modules/*"],
+    "ignore": [
+      "test/*",
+      "docs/*",
+      "frontend/*",
+      "node_modules/*"
+    ],
     "delay": "2500"
   }
 }
