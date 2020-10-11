@@ -111,3 +111,5 @@ CPU.20201010.012004.6673.0.001.cpuprofile
 old/
 frontend/variant-02/.env.development.local
 frontend/variant-02/.env.production.local
+*.sh
+*.sh~
