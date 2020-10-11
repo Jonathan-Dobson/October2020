@@ -1,24 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Modal from './ThingMakers/ModalMaker';
+import Nav from './Components/Navbar';
+import Login from './Dialogs/Login/Login';
+
+
+const Cart = ({ Go, Back }) => <p>My Cart <br />
+  <Go to='/pay'>Continue to Pay</Go>
+  <Go to='/profile'>Profile</Go>
+  <Back>Back</Back>
+</p>
+
+const Pay = ({ Go, Back }) => <p>Pay <br />
+  <Go to='/pay'>Continue to Pay</Go>
+  <Go to='/profile'>Profile</Go>
+  <Back>Back</Back>
+</p>
+
+const Profile = ({ Go, Back }) => <p>Profile <br />
+  <Go to='/pay'>Continue to Pay</Go>
+  <Go to='/profile'>Profile</Go>
+  <Back>Back</Back>
+</p>
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+
+      <Modal when="/cart" show={Cart} />
+      <Modal when="*/Login*" show={Login} />
+      <Modal when="/profile" show={Profile} />
+      <Modal when="/pay" show={Pay} />
+
+
     </div>
   );
 }
