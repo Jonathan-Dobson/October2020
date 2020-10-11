@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import Modal from './ModalMaker';
+import Modal from './ThingMakers/ModalMaker';
 import Nav from './Components/Navbar';
+import Login from './Dialogs/Login/Login';
 
 
 const Cart = ({ Go, Back }) => <p>My Cart <br />
@@ -22,11 +23,7 @@ const Profile = ({ Go, Back }) => <p>Profile <br />
   <Back>Back</Back>
 </p>
 
-const Signin = ({ Go, Back }) => <p>Signin<br />
-  <Go to='/pay'>Continue to Pay</Go>
-  <Go to='/profile'>Profile</Go>
-  <Back>Back</Back>
-</p>
+
 
 function App() {
   return (
@@ -34,7 +31,7 @@ function App() {
       <Nav />
 
       <Modal when="/cart" show={Cart} />
-      <Modal when="/signin" show={Signin} />
+      <Modal when="*/Login*" show={Login} />
       <Modal when="/profile" show={Profile} />
       <Modal when="/pay" show={Pay} />
 

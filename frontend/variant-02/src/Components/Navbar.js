@@ -1,36 +1,27 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Switch, Route } from 'react-router-dom';
 import setTitle from '../functions/setTitle';
-import { Link, NavLink } from './LinkMaker'
+import { NavLink } from '../ThingMakers/LinkMaker'
 
+const Login = <NavLink to='/Login'>Login</NavLink>
+const Logout = <NavLink to='/Logout'>Logout</NavLink>
+const Account = <NavLink to='/Account'>Account</NavLink>
 
 export default function Navbar() {
     const location = useLocation()
     const pathname = location.pathname
 
-    // const Link = p=><NavLink to={{
-    //     pathname: p.to,
-    //     state: location
-    // }}>{p.children}</NavLink>
-
     setTitle(pathname)
-    return <>
-        <Link to='/signin'>Signin</Link>
-        <NavLink to='/signin'>Signin</NavLink>
+    return <div>
+        <NavLink to='/Products'>Products</NavLink>
+        <NavLink to='/Cart'>My Cart</NavLink>
 
-        {/* <NavLink to={{
-            pathname: '/profile',
-            state: location
-        }}>Profile</NavLink>
+        <Switch>
+            <Route path='*/loggedin*'>{Account}{Logout}</Route>
+            <Route path='*/account*'></Route>
+            <Route path='/'>{Login}</Route>
+        </Switch>
 
-        <NavLink to={{
-            pathname: '/products',
-            state: location
-        }}>Products</NavLink>
 
-        <NavLink to={{
-            pathname: '/pay',
-            state: location
-        }}>Pay</NavLink> */}
-    </>
+    </div>
 }
