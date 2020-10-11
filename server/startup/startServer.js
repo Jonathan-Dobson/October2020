@@ -7,7 +7,12 @@ const [ path, fs, https, express, morgan, helmet, errorHandler, mainRouter ] =
 
 const app = express().disable('x-powered-by')
 
-const staticPath = express.static(process.env.STATIC_PATH,{index: 'index.html'})
+const staticPath = express.static(process.env.STATIC_PATH,{
+    index: 'index.html',
+    setHeaders: function (res, path, stat) {
+        res.set('Content-Security-Policy', "default-src 'self'; script-src-elem 'self' storage.googleapis.com")
+      }
+    })
 
 const middleware = [
     [ '/',  express.json() ],
