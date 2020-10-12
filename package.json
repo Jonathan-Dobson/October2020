@@ -2,20 +2,20 @@
   "name": "userauth-october-2020",
   "version": "1.0.0",
   "description": "Practice MERN stack user athentication",
-  "main": "server/startup/startServer.js",
+  "main": "startServer.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "start":"npm run startserver & npm run startreact && exit",
+    "start":"npm run startserver && npm run startreact && exit",
 
     "startserver":"xfce4-terminal -e 'bash -c \"pwd; npm run startinside; bash\"' --title=Server --working-directory=/home/jonathan/dev/FULL-STACK-2020 --hide-menubar --geometry 60x20+2+2",
 
     "startreact":"xfce4-terminal -e 'bash -c \"pwd; npm run build; bash\"' --title=React --working-directory=/home/jonathan/dev/FULL-STACK-2020/frontend/variant-02 --hide-menubar --geometry 60x20+640+2",
 
-    "startinside": "su -c \"nodemon --use-openssl-ca server/startup/startServer.js && pkill -9 -u $(id -u nodejs)\" nodejs",
+    "startinside": "su -c \"nodemon --use-openssl-ca startServer.js && pkill -9 -u $(id -u nodejs)\" nodejs",
     
-    "kill": "clear && sudo pkill -9 -u $(id -u nodejs) -e",
+    "kill": "clear && sudo pkill -9 -u $(id -u nodejs)",
     
     "pid":"ps -aux | grep nodejs",
     "restart": "npm run kill && npm start",
