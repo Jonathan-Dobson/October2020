@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Ubuntu' sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #F3EBF6;
@@ -13,9 +11,10 @@ code {
     monospace;
 }
 
-p {
+/* placeholder remove later */
+/* p {
   background-color: grey;
   padding: 20px;
   border: 1px solid black;
   margin: 40px;
-}
+} */

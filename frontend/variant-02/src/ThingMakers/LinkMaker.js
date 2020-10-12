@@ -3,8 +3,8 @@ import { NavLink as RNavLink, Link as RLink, useLocation } from 'react-router-do
 
 export const [NavLink, Link] = [RNavLink, RLink].map(C => p=> {
     const location = useLocation()
-    return <C to={{
+    return <C {...p} to={{
         pathname: p.to,
         state: location
-    }}>{p.children}</C>
+    }} className='h2'>{p.children}</C>
 })

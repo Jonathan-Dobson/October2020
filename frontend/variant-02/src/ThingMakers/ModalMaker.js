@@ -3,7 +3,7 @@ import { Switch, Route, Link, useLocation } from 'react-router-dom';
 
 const Button = p => {
     const location = useLocation()
-    return <Link to={
+    return <Link {...p} to={
         p.to ? {
             pathname: p.to,
             state: location
@@ -12,12 +12,12 @@ const Button = p => {
     }>{p.children}</Link>
 }
 
-const Modal = ({ when, show }) => {
-    const [Go, Back] = Array(2).fill(p => Button({ ...p, when, show }))
+const Modal = (mp) => {
+    const [Go, Back] = Array(2).fill(bp => Button({...mp,...bp}))
     return <>
         <Switch>
-            <Route path={when}>
-                {show({ Go, Back })}
+            <Route path={mp.when}>
+                {mp.show({ Go, Back })}
             </Route>
         </Switch>
     </>
